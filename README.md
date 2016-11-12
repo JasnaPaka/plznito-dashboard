@@ -6,4 +6,4 @@ Neoficiální přehled hlášení zadaných přes aplikaci [Plznito](http://plzn
 Stačí nakopírovat obsah repozitory do adresáře na webový server s podporou PHP.
 
 ## Zkušební verze
-Běží na adrese [http://89.187.144.151/plznito-dashboard/](http://89.187.144.151/plznito-dashboard/).
+Běží na adrese [http://tools.jasnapaka.com/plznito-dashboard/](http://tools.jasnapaka.com/plznito-dashboard/).
