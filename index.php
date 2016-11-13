@@ -32,7 +32,8 @@ Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište</a>.</p>
 	} else  {
 ?>
 
-<p><strong>Počet hlášení</strong>: <?php print($reader->getCount()) ?></p>
+<p><strong>Počet hlášení</strong>: <?php print($reader->getCount()) ?> |
+	<a href="http://plznito.cz/map#!/add">Přidat nové</a></p>
 
 <?php
 		if ($reader->getCount() > 0) {
