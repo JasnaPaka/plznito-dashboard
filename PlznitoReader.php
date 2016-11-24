@@ -139,7 +139,8 @@ class PlznitoReader
 		}
 
 		// Tomáš Halada
-		if (strpos($description, "TH") !== false) {
+		if (strpos($description, "TH") !== false || strpos($description, "/th") !== false
+			|| strpos($description, "T.H.") !== false) {
 			return '<abbr title="Tomáš Halada">TH</abbr>';
 		}
 
