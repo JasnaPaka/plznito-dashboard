@@ -25,7 +25,7 @@ Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište</a>.</p>
 ?>
 
 <div id="error">
-
+    <strong>Seznam hlášení se nepodařilo načíst. Server je pravděpodobně nedostupný. Zkuste to prosím později.</strong>
 </div>
 
 <?php

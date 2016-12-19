@@ -13,7 +13,7 @@ class PlznitoReader
 	}
 
 	private function loadList() {
-		$str = file_get_contents(self::LIST_URL);
+		$str = @file_get_contents(self::LIST_URL);
 		if ($str === FALSE) {
 			$this->error = true;
 			return;
