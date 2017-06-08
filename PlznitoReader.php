@@ -154,6 +154,11 @@ class PlznitoReader
 			return '<abbr title="Eva Haunerová">EH</abbr>';
 		}
 
+		// Radek Leibl
+		if (strpos($description, "RL") !== false || stripos($description, "Leibl") !== false) {
+			return '<abbr title="Radek Leibl">RL</abbr>';
+		}
+
 		return "";
 	}
 
