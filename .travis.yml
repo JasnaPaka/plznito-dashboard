@@ -7,6 +7,6 @@ notifications:
 email:
   - jasnapaka@jasnapaka.com
 script:
-    - phpunit --coverage-clover=coverage.xml
+    - phpunit
 after_success:
   - bash <(curl -s https://codecov.io/bash)
