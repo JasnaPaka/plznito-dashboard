@@ -1,4 +1,5 @@
 <?php 
+	include "config.php";
     include "src/PlznitoReader.php";
     
     use JasnaPaka\Plznito\PlznitoReader;
@@ -26,7 +27,7 @@ Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište na e-mai
 
 <?php
 	
-    $reader = new PlznitoReader();
+    $reader = new PlznitoReader(DATA_PATH);
 
 	if ($reader->getError()) {
 ?>

@@ -6,19 +6,17 @@ class PlznitoReader
 	const LIST_URL = "http://plznito.cz/api/1.0/tickets/list";
 
 	private $error = false;
+	private $dataPath;
 	private $data;
 
-	function __construct()
+	function __construct($dataPath)
 	{
-		$this->loadList();
+		$this->loadList($dataPath);
 	}
 
-	protected function getPath() {
-		return self::LIST_URL;
-	}
 
-	private function loadList() {
-		$str = @file_get_contents($this->getPath());
+	private function loadList($dataPath) {
+		$str = @file_get_contents($dataPath);
 		if ($str === FALSE) {
 			$this->error = true;
 			return;
