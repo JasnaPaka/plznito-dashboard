@@ -18,6 +18,8 @@
 </head>
 <body>
 
+<div id="content">
+
 <h1>Plznito Dashboard</h1>
 
 <p>Neoficiální přehled hlášení zadaných do aplikace <a href="http://plznito.cz/">Plznito</a>. Jednotlivá hlášení
@@ -64,6 +66,8 @@ Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište na e-mai
 		}
 	}
 ?>
+
+</div>
 
 </body>
 </html>
