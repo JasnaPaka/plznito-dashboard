@@ -1,4 +1,5 @@
 <?php
+namespace JasnaPaka\Plznito;
 
 class PlznitoReader
 {
@@ -12,8 +13,12 @@ class PlznitoReader
 		$this->loadList();
 	}
 
+	protected function getPath() {
+		return self::LIST_URL;
+	}
+
 	private function loadList() {
-		$str = @file_get_contents(self::LIST_URL);
+		$str = @file_get_contents($this->getPath());
 		if ($str === FALSE) {
 			$this->error = true;
 			return;

@@ -1,3 +1,9 @@
+<?php 
+    include "src/PlznitoReader.php";
+    
+    use JasnaPaka\Plznito\PlznitoReader;
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +13,7 @@
 
 	<title>Plznito Dashboard</title>
 
-	<link href="./css/style.css" rel="stylesheet" />
+	<link href="./public/css/style.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -15,11 +21,12 @@
 
 <p>Neoficiální přehled hlášení zadaných do aplikace <a href="http://plznito.cz/">Plznito</a>. Jednotlivá hlášení
 jsou řazena podle data poslední úpravy, aby bylo možné sledovat, jak se s jednotlivými hlášeními na městě pracuje.
-Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište</a>.</p>
+Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište na e-mail</a> či připomínkujte na 
+<a href="https://github.com/JasnaPaka/plznito-dashboard">GitHubu</a>.</p>
 
 <?php
-	include "PlznitoReader.php";
-	$reader = new PlznitoReader();
+	
+    $reader = new PlznitoReader();
 
 	if ($reader->getError()) {
 ?>
