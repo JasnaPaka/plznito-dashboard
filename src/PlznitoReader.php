@@ -4,6 +4,7 @@ namespace JasnaPaka\Plznito;
 class PlznitoReader
 {
 	const LIST_URL = "http://plznito.cz/api/1.0/tickets/list";
+    const GEO_URL = "https://tools.jasnapaka.com/mestske-obvody-plzen/service.php";
 
 	private $error = false;
 	private $dataPath;
@@ -51,7 +52,51 @@ class PlznitoReader
 
 			return $date1 > $date2 ? -1 : 1;
 		});
+
+        if ($this->getIsUMO()) {
+            $this->filtrUMO();
+        }
 	}
+
+    protected function filtrUMO() {
+
+        $items = $this->data->items;
+        $itemsNew = [];
+
+        // nejprve sestavíme request
+        $request = [];
+
+        foreach ($items as $item) {
+            $requestItem = [];
+            $requestItem["lat"] = (double) $item->latitude;
+            $requestItem["long"] = (double) $item->longitude;
+
+            $request[] = $requestItem;
+        }
+
+        // pošleme hromadné nastavení
+        $ch = curl_init(self::GEO_URL);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $result = curl_exec($ch);
+        $resultItems = json_decode($result, true)["items"];
+
+        $umo = "umo". ((int) $_GET["umo"]);
+
+        $i = 0;
+        foreach ($items as $item) {
+            if ($resultItems[$i]["code"] === $umo) {
+                $itemsNew[] = $item;
+            }
+
+            $i++;
+        }
+
+        $this->data->items = $itemsNew;
+    }
 
 	public function getError() {
 		return $this->error;
@@ -164,5 +209,14 @@ class PlznitoReader
 
 		return "";
 	}
+
+    public function getIsUMO() {
+        if (!isset($_GET["umo"])) {
+            return false;
+        }
+
+        $umo = (int) $_GET["umo"];
+        return $umo > 0 && $umo <= 10;
+    }
 
 }

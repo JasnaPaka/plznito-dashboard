@@ -45,6 +45,25 @@ Připomínky? Náměty? <a href="mailto:jasnapaka@jasnapaka.com">Pište na e-mai
 <p><strong>Počet hlášení</strong>: <?php print($reader->getCount()) ?> |
 	<a href="http://plznito.cz/map#!/add">Přidat nové</a></p>
 
+<?php if (!$reader->getIsUMO()) { ?>
+    <p>
+        Hlášení dle obvodu:
+        <a href="./?umo=1">UMO 1</a> |
+        <a href="./?umo=2">UMO 2</a> |
+        <a href="./?umo=3">UMO 3</a> |
+        <a href="./?umo=4">UMO 4</a> |
+        <a href="./?umo=5">UMO 5</a> |
+        <a href="./?umo=6">UMO 6</a> |
+        <a href="./?umo=7">UMO 7</a> |
+        <a href="./?umo=8">UMO 8</a> |
+        <a href="./?umo=9">UMO 9</a> |
+        <a href="./?umo=10">UMO 10</a>
+    </p>
+<?php } else { ?>
+    <p><strong>Hlášení jsou omezena na městský obvod Plzeň <?php echo (int) $_GET["umo"] ?>.
+    </strong> (<a href="./">zrušit filtr</a>)</p>
+
+<?php } ?>
 <?php
 		if ($reader->getCount() > 0) {
 			print('<table><col width="5%" /><col width="35%" /><col width="25%" /><col width="15%" /><col width="15%" /><col width="5%" />');
